@@ -67,11 +67,11 @@ public class CommentDBUtil {
 		parametername.clear();
 		parametervalue.clear();
 		resultinfo.clear();
-		parametername.add("CommentId");
+		parametername.add("commentId");
 		parametervalue.add(Integer.toString(CommentId));
 			
 		try{
-			resultinfo = Soap.GetWebService("selectAllCommentsByPostId", parametername, parametervalue);
+			resultinfo = Soap.GetWebService("selectCommentById", parametername, parametervalue);
 		}
 		catch(Exception e) {
 		}
