@@ -6,9 +6,11 @@ import com.edu.thss.smartdental.ui.drawer.NavDrawerItem;
 import com.edu.thss.smartdental.ui.drawer.NavDrawerListAdapter;
 
 
+
 import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -39,14 +41,14 @@ public class MainActivity extends FragmentActivity implements OnItemClickListene
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
+
 		findView();
 		
 		if(savedInstanceState == null){
 			selectItem(8);
 		}
 	}
-	
+
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if (resultCode == Activity.RESULT_OK) {
 			finish();
@@ -54,6 +56,15 @@ public class MainActivity extends FragmentActivity implements OnItemClickListene
 			startActivity(intent);
 		}
     }
+	
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		setContentView(R.layout.activity_main);
+		findView();
+		selectItem(8);
+		super.onResume();
+	}
 	
 	@SuppressLint("NewApi")
 	private void findView(){
