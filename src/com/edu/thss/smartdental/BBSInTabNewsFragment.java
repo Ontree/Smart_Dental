@@ -1,7 +1,6 @@
 package com.edu.thss.smartdental;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import com.edu.thss.smartdental.RemoteDB.NewsDBUtil;
 import com.edu.thss.smartdental.adapter.NewsListAdapter;
@@ -46,10 +45,8 @@ public class BBSInTabNewsFragment extends Fragment {
 				long id) {
 			NewsDBUtil db = new NewsDBUtil();
 			NewsElement element = newsList.get(position);
-			Iterator<String> iterator = element.getNewsIDList().iterator();
-			while (iterator.hasNext()) {
-				db.haveread(iterator.next());
-			}
+			db.haveread(element.getNewsID());
+			
 			Intent intent = new Intent(getActivity(), BBSDetailActivity.class);
 			intent.putExtra("postId", element.getPostID());
 			startActivity(intent);

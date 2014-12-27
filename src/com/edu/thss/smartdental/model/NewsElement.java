@@ -1,87 +1,33 @@
 package com.edu.thss.smartdental.model;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-
 public class NewsElement {
 
+	private String newsID;
 	private String postID;
-	private String postTitle;
-	private String type;
-	private ArrayList<String> userNameList;
-	private ArrayList<String> newsIDList;
-	private String time;
+	private String content;
+	private String userName;
 	
-	public NewsElement(String postID, String postTitle, String type, ArrayList<String> userNameList, ArrayList<String> newsIDList, String time) {
+	public NewsElement(String newsID, String postID, String content, String userName) {
+		this.newsID = newsID;
 		this.postID = postID;
-		this.postTitle = postTitle;
-		this.type = type;
-		this.userNameList = userNameList;
-		this.newsIDList = newsIDList;
-		this.time = time;
+		this.content = content;
+		this.userName = userName;
 	}
 	
-	public NewsElement() {
-		this.userNameList = new ArrayList<String>();
+	public String getNewsID() {
+		return this.newsID;
 	}
 	
 	public String getPostID() {
 		return this.postID;
 	}
 	
-	public String getPostTitle() {
-		return this.postTitle;
+	public String getContent() {
+		return this.content;
 	}
 	
-	public String getType() {
-		return this.type;
-	}
-	
-	public ArrayList<String> getUserNameList() {
-		return this.userNameList;
-	}
-	
-	public String getTime() {
-		return this.time;
-	}
-	
-	public void addUserToList(String userName) {
-		Iterator<String> iterator = this.userNameList.iterator();
-		
-		while (iterator.hasNext()) {
-			if (iterator.next().compareTo(userName) == 0) {
-				return;
-			}
-		}
-		this.userNameList.add(userName);
-	}
-	
-	public int getUserListSize() {
-		return this.userNameList.size();
-	}
-	
-	public void setTime(String time) {
-		this.time = time;
-	}
-	
-	public void setType(String type) {
-		this.type = type;
-	}
-	
-	public void setPostID(String postID) {
-		this.postID = postID;
-	}
-	
-	public void setPostTitle(String postTitle) {
-		this.postTitle = postTitle;
-	}
-	
-	public ArrayList<String> getNewsIDList() {
-		return this.newsIDList;
-	}
-	
-	public void addNewsID(String newsID) {
-		this.newsIDList.add(newsID);
+	public String getUserName() {
+		return this.userName;
 	}
 	
 }
