@@ -11,7 +11,7 @@ public class NewsDBUtil {
 	private ArrayList<String> resultinfo = new ArrayList<String>();
 	private HttpConnSoap Soap = new HttpConnSoap();
 	/**
-	 * 获得用户全部新消息
+	 * 鑾峰緱鐢ㄦ埛鍏ㄩ儴鏂版秷鎭�
 	 * 
 	 * @return
 	 */
@@ -50,7 +50,7 @@ public class NewsDBUtil {
 		return list;
 	}
 	/**
-	 * 获取用户全部已读消息
+	 * 鑾峰彇鐢ㄦ埛鍏ㄩ儴宸茶娑堟伅
 	 * 
 	 * @return
 	 */
@@ -91,7 +91,7 @@ public class NewsDBUtil {
 	}
 	
 	/**
-	 * 新建一条消息
+	 * 鏂板缓涓�鏉℃秷鎭�
 	 * 
 	 * @return
 	 */
@@ -108,7 +108,7 @@ public class NewsDBUtil {
 		parametervalue.add(username);
 		parametervalue.add(replytouser);
 		parametervalue.add(newscontent);
-		parametername.add(Integer.toString(postId));
+		parametervalue.add(Integer.toString(postId));
 		try{
 			resultinfo = Soap.GetWebService("insertNews", parametername, parametervalue);
 		}
@@ -121,7 +121,7 @@ public class NewsDBUtil {
 	}
 	
 	/**
-	 * 更新消息为已读
+	 * 鏇存柊娑堟伅涓哄凡璇�
 	 * 
 	 * @return
 	 */
