@@ -17,9 +17,12 @@ import com.edu.thss.smartdental.ui.dialog.JoinCircleDialog;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.text.Html;
@@ -39,6 +42,7 @@ public class JoinCircleActivity extends FragmentActivity implements JoinCircleDi
 	private ArrayList<CircleElement> circles;
 	private JoinCircleListAdapter listAdapter;
 	private FragmentManager fragmentManager;
+	private ProgressDialog pd;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -47,12 +51,31 @@ public class JoinCircleActivity extends FragmentActivity implements JoinCircleDi
 		fragmentManager = getSupportFragmentManager();
 		
 		list = (ListView) findViewById(R.id.join_circle_list);
-		initCircles();
+		pd = ProgressDialog.show(this, "", getResources().getString(R.string.loading));
+		circles = new ArrayList<CircleElement>();
 		listAdapter = new JoinCircleListAdapter(circles, getApplicationContext());
 		list.setAdapter(listAdapter);
 		list.setOnItemClickListener(new OnJoinCircleItemClickListener());
+		new Thread(new Runnable(){
+
+			@Override
+			public void run() {
+				initCircles();		
+				handler.sendEmptyMessage(0); 			
+			}
+		}).start();
 		setResult(Activity.RESULT_CANCELED);
 	}
+	
+	@SuppressLint("HandlerLeak")
+	private Handler handler = new Handler() {  
+		
+		@Override  
+		public void handleMessage(Message msg) {
+			showCircles();
+			pd.dismiss();
+        }  
+    };
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -75,7 +98,6 @@ public class JoinCircleActivity extends FragmentActivity implements JoinCircleDi
 	}
 	
 	private void initCircles() {
-		circles = new ArrayList<CircleElement>();
 		UserDBUtil db = new UserDBUtil();
 		List<HashMap<String, String>> docList = db.getAllDoctors();
 		Iterator<HashMap<String, String>> iterator = docList.iterator();
@@ -86,6 +108,10 @@ public class JoinCircleActivity extends FragmentActivity implements JoinCircleDi
 			circles.add(circleElement);
 		}
 	}
+	
+	private void showCircles() {
+		this.listAdapter.notifyDataSetChanged();
+    }
 	
 	private SearchView.OnQueryTextListener filterQueryTextListener = new SearchView.OnQueryTextListener() {
 

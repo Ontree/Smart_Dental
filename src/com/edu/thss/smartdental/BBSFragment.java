@@ -15,6 +15,7 @@ import com.edu.thss.smartdental.RemoteDB.UserDBUtil;
 import com.edu.thss.smartdental.adapter.CircleListAdapter;
 import com.edu.thss.smartdental.model.CircleElement;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -54,33 +55,31 @@ public class BBSFragment extends Fragment {
 		circles = new ArrayList<CircleElement>();
 		
 		listAdapter = new CircleListAdapter(circles, this.getActivity().getApplicationContext());
-	    list.setAdapter(listAdapter);
-	    list.setOnItemClickListener(new OnCircleItemClickListener());
-        new Thread(new Runnable(){
+		list.setAdapter(listAdapter);
+		list.setOnItemClickListener(new OnCircleItemClickListener());
+		new Thread(new Runnable(){
 
 			@Override
 			public void run() {
-				// TODO Auto-generated method stub
 				initCircles();		
 				handler.sendEmptyMessage(0); 			
 			}
-        }).start();  
-		
-       
+		}).start();  
 		
 		return rootView;
 	}
 	
+	@SuppressLint("HandlerLeak")
 	Handler handler = new Handler() {  
-        @Override  
-        public void handleMessage(Message msg) {// handler鎺ユ敹鍒版秷鎭悗灏变細鎵ц姝ゆ柟娉�  
-        	showCircles();
-            pd.dismiss();// 鍏抽棴ProgressDialog 
-            
+        
+		@Override  
+		public void handleMessage(Message msg) {// handler鎺ユ敹鍒版秷鎭悗灏变細鎵ц姝ゆ柟娉�
+			showCircles();
+			pd.dismiss();
         }  
-    }; 
+    };
     
-    private void initCircles(){
+	private void initCircles(){
 		
 		UserDBUtil db = new UserDBUtil();
 		String username = getActivity().getSharedPreferences("setting", Activity.MODE_PRIVATE).getString("username", "");
@@ -94,7 +93,7 @@ public class BBSFragment extends Fragment {
 		}
 	}
 	
-    private void showCircles(){
+	private void showCircles(){
 		this.listAdapter.notifyDataSetChanged();
     }
     

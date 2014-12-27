@@ -1,9 +1,16 @@
 package com.edu.thss.smartdental;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import com.edu.thss.smartdental.RemoteDB.CommentDBUtil;
+
 import android.app.Activity; 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle; 
 import android.view.MotionEvent; 
 import android.view.View; 
@@ -21,6 +28,12 @@ public class InputActivity extends Activity {
 	private Button post_reply_button;
 	private String comment_id;
 	private String post_id;
+	private String toName;
+	private String type;
+	private String userName;
+	private CommentDBUtil commentDB;
+	List<HashMap<String, String>> comment;
+	private SharedPreferences preferences = null;
 	
 	@Override 
 	protected void onCreate(Bundle savedInstanceState) { 
@@ -29,7 +42,19 @@ public class InputActivity extends Activity {
 		//layout=(RelativeLayout)findViewById(R.id.exit_layout); 
 		//input_layout = (LinearLayout)findViewById(R.id.input_layout);
 		comment_id=getIntent().getExtras().getString("commentId");
+		toName = "";
+		type="comment";
+		preferences = this.getSharedPreferences("setting",
+				Activity.MODE_PRIVATE);
+		userName=preferences.getString("username", "");
 		
+		if(!comment_id.equals("")){
+			commentDB = new CommentDBUtil();
+			comment = commentDB.getCommentById(Integer.parseInt(comment_id));
+			type="reply";
+			toName = comment.get(1).get("commentusername");
+		}
+		post_id = getIntent().getExtras().getString("postId");
 		edit=(EditText)findViewById(R.id.edit_reply);
 		edit.setFocusable(true);
         edit.setFocusableInTouchMode(true);
@@ -57,8 +82,48 @@ public class InputActivity extends Activity {
 			@Override 
 			public void onClick(View v) { 
 				// TODO Auto-generated method stub 
-				Toast.makeText(getApplicationContext(), comment_id, 
-						Toast.LENGTH_SHORT).show(); 
+				
+				//commentDB.insertComment(post_id, commentContent, String username, String CommentType, String ReplyUserName);
+				
+				
+				
+				String result;
+				if (edit.getText().toString().equals("")) {
+					result = "评论不能为空";
+				}
+				else {
+					result = commentDB.insertComment(post_id, edit.getText().toString(), userName, type, toName);
+				}
+				if (result.equals("true")) {
+					AlertDialog.Builder builder = new AlertDialog.Builder(InputActivity.this);
+					builder.setMessage("发布成功")
+						   .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+							
+							@Override
+							public void onClick(DialogInterface dialog, int which) {
+								// TODO Auto-generated method stub
+								finish();
+							}
+						});
+					builder.show();
+				}
+				else {
+					AlertDialog.Builder builder = new AlertDialog.Builder(InputActivity.this);
+					if (result.equals("false")) result = "连不上服务器";
+					builder.setMessage(result)
+						   .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+							
+							@Override
+							public void onClick(DialogInterface dialog, int which) {
+								// TODO Auto-generated method stub
+							}
+						});
+					builder.show();
+				};
+				
+				
+				//Toast.makeText(getApplicationContext(), toName, 
+				//		Toast.LENGTH_SHORT).show(); 
 				
 			} 
 		}); 
