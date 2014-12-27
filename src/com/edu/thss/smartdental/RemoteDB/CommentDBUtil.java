@@ -55,6 +55,52 @@ public class CommentDBUtil {
 
 		return list;
 	}
+	
+	/**
+	 * 获取某个帖子
+	 * 
+	 * @return
+	 */
+	public List<HashMap<String, String>> getCommentById(int CommentId) {
+		List<HashMap<String, String>> list = new ArrayList<HashMap<String, String>>();
+
+		parametername.clear();
+		parametervalue.clear();
+		resultinfo.clear();
+		parametername.add("CommentId");
+		parametervalue.add(Integer.toString(CommentId));
+			
+		try{
+			resultinfo = Soap.GetWebService("selectAllCommentsByPostId", parametername, parametervalue);
+		}
+		catch(Exception e) {
+		}
+			
+
+		HashMap<String, String> tempHash = new HashMap<String, String>();
+		tempHash.put("commentusername", "commentusername");
+		tempHash.put("commenttype", "commenttype");
+		tempHash.put("commentcontent", "commentcontent");
+		tempHash.put("replytouser", "replytouser");
+		tempHash.put("time","time");
+		tempHash.put("commentid","commentid");
+		tempHash.put("postid","postid");
+		list.add(tempHash);
+		
+		for (int j = 0; j < resultinfo.size(); j += 7) {
+			HashMap<String, String> hashMap = new HashMap<String, String>();
+			hashMap.put("commentusername", resultinfo.get(j));
+			hashMap.put("commenttype", resultinfo.get(j + 1));
+			hashMap.put("commentcontent", resultinfo.get(j + 2));
+			hashMap.put("replytouser", resultinfo.get(j + 3));
+			hashMap.put("time", resultinfo.get(j + 4));
+			hashMap.put("commentid", resultinfo.get(j + 5));
+			hashMap.put("postid", resultinfo.get(j + 6));
+			list.add(hashMap);
+		}
+
+		return list;
+	}
 	/**
 	 * 新增评论
 	 * 
