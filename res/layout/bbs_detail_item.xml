@@ -60,7 +60,7 @@
      android:layout_height="wrap_content"
      android:layout_below="@+id/bbs_detail_item_content"
      android:layout_marginTop="20dp"
-     android:layout_toLeftOf="@+id/bbs_detail_item_author"
+     android:layout_toLeftOf="@+id/bbs_detail_item_reply"
      android:background="@color/app_white"
      android:minHeight="0dip"
      android:minWidth="0dip"
@@ -75,7 +75,7 @@
      android:layout_height="wrap_content"
      android:layout_below="@+id/bbs_detail_item_content"
      android:layout_marginTop="20dp"
-     android:layout_toLeftOf="@+id/bbs_detail_item_delete"
+     android:layout_toLeftOf="@+id/bbs_detail_item_reply"
      android:background="@color/app_white"
      android:minHeight="0dip"
      android:minWidth="0dip"
@@ -83,5 +83,20 @@
      android:text="收藏"
      android:textColor="@color/app_blue"
      android:textSize="16sp" />
+
+ <Button
+     android:id="@+id/bbs_detail_item_reply"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_below="@+id/bbs_detail_item_content"
+     android:layout_marginTop="20dp"
+     android:layout_toLeftOf="@+id/bbs_detail_item_author"
+     android:background="@color/app_white"
+     android:minHeight="0dip"
+     android:minWidth="0dip"
+     android:paddingRight="10dp"
+     android:textColor="@color/app_blue"
+     android:textSize="16sp"
+     android:text="回复" />
 
 </RelativeLayout>

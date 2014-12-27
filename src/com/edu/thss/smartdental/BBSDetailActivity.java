@@ -57,8 +57,6 @@ public class BBSDetailActivity extends Activity {
 
 		list2 = (ListView) findViewById(R.id.listView2);
 		initPosts();
-		post_reply_button = (Button) findViewById(R.id.post_reply_button);
-		post_reply_button.setOnClickListener(postReplyListener);
 		context = this.getApplicationContext();
 		context1 = this;
 		bbsAdapter = new BBSDetailAdapter(posts, context, context1);
@@ -104,19 +102,14 @@ public class BBSDetailActivity extends Activity {
 		}
 	}
 	
-	private OnClickListener postReplyListener = new OnClickListener() {
-		
-		@Override
-		public void onClick(View v) {
-			// TODO Auto-generated method stub
-			Intent intent = new Intent();
-			intent.setClass(context, PostReplyActivity.class);
-			intent.putExtra("postId", post_id);
-			intent.putExtra("username", preferences.getString("username", ""));
-			startActivity(intent);
-		}
-	};
-
+	public void beginReply(){
+		Intent intent = new Intent();
+		intent.setClass(context, PostReplyActivity.class);
+		intent.putExtra("postId", post_id);
+		intent.putExtra("username", preferences.getString("username", ""));
+		startActivity(intent);
+	}
+	
 	public boolean isLocalUser(){
 		if(author.equals(localUser))
 			return true;
@@ -152,10 +145,11 @@ public class BBSDetailActivity extends Activity {
 	}
 	
 	public boolean collected(String content){
+		boolean res = true;
 		if(content.equals(getString(R.string.collect))){
-			return false;
+			res = false;
 		}
-		return true;
+		return res;
 	}
 	
 	public void changeState(Button button, boolean now_state) {
