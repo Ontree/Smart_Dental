@@ -9,15 +9,14 @@
         android:id="@+id/listView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
-
     </ListView>
+
     
 	<RelativeLayout
     	android:layout_width="match_parent"
-    	android:layout_height="20dp"
+    	android:layout_height="3dp"
     	android:background="@color/light_grey"
     	android:orientation="horizontal" 
-    	android:layout_below="@+id/listView2"
     	android:descendantFocusability="blocksDescendants">
      </RelativeLayout>
      
@@ -25,7 +24,6 @@
         android:id="@+id/listView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
-
     </ListView>
 
     <Button
@@ -34,5 +32,4 @@
         android:layout_height="wrap_content"
         android:text="发表评论" />
     
-
 </LinearLayout>
