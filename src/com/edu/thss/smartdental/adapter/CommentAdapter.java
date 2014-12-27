@@ -123,12 +123,14 @@ public class CommentAdapter extends BaseAdapter {
 			int viewId = view.getId();
 			if (viewId == holder.reply.getId()) {
 				int commentId = list.get(itemPosition).id;
+				int postId = list.get(itemPosition).postId;
 				
 				Intent intent = new Intent();
 				//context = context.getApplicationContext();
 				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				intent.setClass(context, InputActivity.class);
 				intent.putExtra("commentId", String.valueOf(commentId));
+				intent.putExtra("postId", String.valueOf(postId));
 				//intent.putExtra("username", preferences.getString("username", ""));
 				context.startActivity(intent);
 				//startActivity(intent);
