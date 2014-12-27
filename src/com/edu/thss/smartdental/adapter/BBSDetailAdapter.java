@@ -83,11 +83,13 @@ public class BBSDetailAdapter extends BaseAdapter implements Filterable{
 		holder.collect = (Button)convertView.findViewById(R.id.bbs_detail_item_collect);
 		holder.collect.setOnClickListener(new collectButtonListner(holder.collect));
 		
-		//judge the delete button show or not
+		//judge the delete button and collect button show or not
 		if(!context1.isLocalUser()){
 			holder.delete.setVisibility(View.INVISIBLE);
 		}
-		
+		else{
+			holder.collect.setVisibility(View.INVISIBLE);
+		}
 		//judge the state of collect button
 		if(context1.postCollected()){
 			context1.changeState(holder.collect, false);

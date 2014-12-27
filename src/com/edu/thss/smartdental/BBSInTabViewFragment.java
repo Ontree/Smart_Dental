@@ -178,7 +178,7 @@ public class BBSInTabViewFragment extends Fragment {
 			String userName = getActivity().getSharedPreferences("setting", Activity.MODE_PRIVATE).getString("username", "");
 			List<HashMap<String, String>> idList = db.selectcollectPostid(userName);
 			for (int i = 1; i < idList.size(); i++){
-				String id=idList.get(i).get("PostId");
+				String id=idList.get(i).get("postid");
 				
 				List<HashMap<String, String>> postInfo = db.selectPostById(Integer.parseInt(id));
 				String doctorid=postInfo.get(1).get("doctorid");

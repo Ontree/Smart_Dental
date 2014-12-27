@@ -75,7 +75,7 @@
      android:layout_height="wrap_content"
      android:layout_below="@+id/bbs_detail_item_content"
      android:layout_marginTop="20dp"
-     android:layout_toLeftOf="@+id/bbs_detail_item_delete"
+     android:layout_toLeftOf="@+id/bbs_detail_item_author"
      android:background="@color/app_white"
      android:minHeight="0dip"
      android:minWidth="0dip"

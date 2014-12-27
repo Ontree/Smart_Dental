@@ -150,10 +150,11 @@ public class BBSDetailActivity extends Activity {
 	}
 	
 	public boolean collected(String content){
+		boolean res = true;
 		if(content.equals(getString(R.string.collect))){
-			return false;
+			res = false;
 		}
-		return true;
+		return res;
 	}
 	
 	public void changeState(Button button, boolean now_state) {
