@@ -104,6 +104,7 @@ public class BBSInFragment extends Fragment {
 			} else {
 				badge.setText(Integer.toString(num));
 			}
+			badge.show();
 		} else {
 			badge.hide();
 		}
