@@ -3,7 +3,7 @@
 LoginActivity在登录成功后会在sharedPreference里记录用户id和用户名。
 在其它Activity获取sharedPreference信息的方式为：
 import android.content.SharedPreferences;
-SharedPreferences preferences = getSharedPreferences("setting", MODE_PRIVATE");
+SharedPreferences preferences = getSharedPreferences("setting", MODE_PRIVATE);
 int userid = preferences.getInt("userid", -1);
 String username = preferences.getString("username", "");
 
