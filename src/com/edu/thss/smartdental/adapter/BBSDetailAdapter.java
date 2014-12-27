@@ -35,6 +35,7 @@ public class BBSDetailAdapter extends BaseAdapter implements Filterable{
 	private class buttonViewHolder{
 		Button delete; //
 		Button collect;
+		Button reply;
 	}
 	
 	public BBSDetailAdapter(ArrayList<BBSDetail> list, Context context, BBSDetailActivity context1){
@@ -82,6 +83,9 @@ public class BBSDetailAdapter extends BaseAdapter implements Filterable{
 		
 		holder.collect = (Button)convertView.findViewById(R.id.bbs_detail_item_collect);
 		holder.collect.setOnClickListener(new collectButtonListner(holder.collect));
+		
+		holder.reply = (Button)convertView.findViewById(R.id.bbs_detail_item_reply);
+		holder.reply.setOnClickListener(new replyButtonListner());
 		
 		//judge the delete button and collect button show or not
 		if(!context1.isLocalUser()){
@@ -188,6 +192,15 @@ public class BBSDetailAdapter extends BaseAdapter implements Filterable{
     			context1.cancelCollectPost();
     			context1.changeState(button, true);
     		}
+    	}
+    }
+    
+    class replyButtonListner implements OnClickListener{
+    	public replyButtonListner(){
+    	}
+    	@Override
+    	public void onClick(View v){
+    		context1.beginReply();    		
     	}
     }
 
