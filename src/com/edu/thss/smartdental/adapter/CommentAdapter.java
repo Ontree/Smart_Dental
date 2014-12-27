@@ -128,7 +128,7 @@ public class CommentAdapter extends BaseAdapter {
 				//context = context.getApplicationContext();
 				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				intent.setClass(context, InputActivity.class);
-				//intent.putExtra("postId", post_id);
+				intent.putExtra("commentId", String.valueOf(commentId));
 				//intent.putExtra("username", preferences.getString("username", ""));
 				context.startActivity(intent);
 				//startActivity(intent);

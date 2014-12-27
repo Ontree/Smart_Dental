@@ -10,18 +10,17 @@
         android:id="@+id/admin_tab"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true">
+        android:layout_height="wrap_content">
         <RadioButton
             android:id="@+id/add_single"
             style="@style/emr_tab"
             android:drawableBottom="@drawable/emr_tab_bottom"
-            android:text="添加单个医生" />
+            android:text="@string/add_one_doctor" />
         <RadioButton
             android:id="@+id/add_many"
             style="@style/emr_tab"
             android:drawableBottom="@drawable/emr_tab_bottom"
-            android:text="添加批量医生" />
+            android:text="@string/add_many_doctor" />
     </RadioGroup>
     
     <FrameLayout 

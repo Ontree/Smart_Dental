@@ -13,12 +13,12 @@
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:textSize="20sp"
-        android:text="从xls表格文件导入\n格式为每行一条记录：用户名,密码\n注意：分隔符必须使用英文逗号。" />
+        android:text="@string/file_export_hint" />
     
     <Button
         android:id="@+id/add_many_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="从文件导入" />
+        android:text="@string/file_export" />
 
 </LinearLayout>

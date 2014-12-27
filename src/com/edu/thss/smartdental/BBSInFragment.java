@@ -118,36 +118,11 @@ public class BBSInFragment extends Fragment {
 	private void initNewsListToShow(List<HashMap<String, String>> listFromDB) {
 		this.newsList = new ArrayList<NewsElement>();
 		Iterator<HashMap<String, String>> iteratorOfDB = listFromDB.iterator();
-		Iterator<NewsElement> iteratorOfLocal;
-		boolean is_existed;
-		NewsElement element;
-		HashMap<String, String> elementFromDB;
 		
 		iteratorOfDB.next();
 		while (iteratorOfDB.hasNext()) {
-			elementFromDB = iteratorOfDB.next();
-			is_existed = false;
-			iteratorOfLocal = this.newsList.iterator();
-			while (iteratorOfLocal.hasNext()) {
-				element = iteratorOfLocal.next();
-				if (element.getPostID().compareTo(elementFromDB.get("postId")) == 0 && element.getType().compareTo(elementFromDB.get("newstype")) == 0) {
-					is_existed = true;
-					element.addUserToList(elementFromDB.get("username"));
-					element.addNewsID(elementFromDB.get("newsId"));
-					element.setTime(elementFromDB.get("time"));
-					break;
-				}
-			}
-			if (!is_existed) {
-				element = new NewsElement();
-				element.addUserToList(elementFromDB.get("username"));
-				element.addNewsID(elementFromDB.get("newsId"));
-				element.setPostID(elementFromDB.get("postId"));
-				element.setPostTitle(elementFromDB.get("postname"));
-				element.setTime(elementFromDB.get("time"));
-				element.setType(elementFromDB.get("newstype"));
-				this.newsList.add(element);
-			}
+			HashMap<String, String> elementFromDB = iteratorOfDB.next();
+			this.newsList.add(new NewsElement(elementFromDB.get("newsId"), elementFromDB.get("postId"), elementFromDB.get("content"), elementFromDB.get("username")));
 		}
 		
 	}

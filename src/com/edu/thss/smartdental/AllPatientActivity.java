@@ -77,7 +77,14 @@ public class AllPatientActivity extends Activity {
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
 					// TODO Auto-generated method stub
-					Toast.makeText(AllPatientActivity.this, db.kickout(list.get(tPosition + 1).get("username"), preferences.getString("username", "")), Toast.LENGTH_LONG).show();
+					String t = db.kickout(list.get(tPosition + 1).get("username"), preferences.getString("username", ""));
+					if (t.equals("true"))
+						Toast.makeText(AllPatientActivity.this, "踢出成功", Toast.LENGTH_LONG).show();
+					else
+						if (t.equals("fail to connect to Database"))
+							Toast.makeText(AllPatientActivity.this, "连不上服务器", Toast.LENGTH_LONG).show();
+						else
+							Toast.makeText(AllPatientActivity.this, "未知错误", Toast.LENGTH_LONG).show();
 					list = db.getAllpatients(preferences.getString("username", ""));
 					ArrayList<String> data = new ArrayList<String>();
 					for (int i = 1; i < list.size(); i++) {
