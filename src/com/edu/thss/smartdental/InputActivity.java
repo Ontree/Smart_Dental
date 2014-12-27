@@ -19,12 +19,17 @@ public class InputActivity extends Activity {
 	private LinearLayout input_layout; 
 	private EditText edit;
 	private Button post_reply_button;
+	private String comment_id;
+	private String post_id;
+	
 	@Override 
 	protected void onCreate(Bundle savedInstanceState) { 
 		super.onCreate(savedInstanceState); 
 		setContentView(R.layout.activity_input); 
 		//layout=(RelativeLayout)findViewById(R.id.exit_layout); 
 		//input_layout = (LinearLayout)findViewById(R.id.input_layout);
+		comment_id=getIntent().getExtras().getString("commentId");
+		
 		edit=(EditText)findViewById(R.id.edit_reply);
 		edit.setFocusable(true);
         edit.setFocusableInTouchMode(true);
@@ -52,8 +57,9 @@ public class InputActivity extends Activity {
 			@Override 
 			public void onClick(View v) { 
 				// TODO Auto-generated method stub 
-				Toast.makeText(getApplicationContext(), "提示：点击窗口外部关闭窗口！", 
+				Toast.makeText(getApplicationContext(), comment_id, 
 						Toast.LENGTH_SHORT).show(); 
+				
 			} 
 		}); 
 		
