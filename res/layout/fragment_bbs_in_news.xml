@@ -7,7 +7,7 @@
     <ListView 
         android:id="@+id/bbs_news_list"
         android:layout_width="match_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:divider="@color/app_grey"
         android:dividerHeight="1dp" >
     </ListView>
