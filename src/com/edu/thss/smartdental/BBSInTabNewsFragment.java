@@ -50,7 +50,8 @@ public class BBSInTabNewsFragment extends Fragment {
 			Intent intent = new Intent(getActivity(), BBSDetailActivity.class);
 			intent.putExtra("postId", element.getPostID());
 			startActivity(intent);
-			view.setVisibility(View.GONE);
+			newsList.remove(position);
+			listAdapter.notifyDataSetChanged();
 		}
 		
 	}

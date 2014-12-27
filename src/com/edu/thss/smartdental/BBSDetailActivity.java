@@ -1,31 +1,21 @@
 package com.edu.thss.smartdental;
 
-import android.R.integer;
-import android.R.string;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.StrictMode;
-import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import javax.xml.soap.Detail;
-
 import com.edu.thss.smartdental.RemoteDB.CommentDBUtil;
 import com.edu.thss.smartdental.RemoteDB.PostDBUtil;
 import com.edu.thss.smartdental.adapter.BBSDetailAdapter;
 import com.edu.thss.smartdental.adapter.CommentAdapter;
-import com.edu.thss.smartdental.model.BBSElement;
 import com.edu.thss.smartdental.model.BBSDetail;
 import com.edu.thss.smartdental.model.CommentElement;
 
@@ -38,7 +28,6 @@ public class BBSDetailActivity extends Activity {
 	private CommentAdapter commentAdapter;
 	private Context context;
 	private BBSDetailActivity context1;
-	private Button post_reply_button;
 	private String post_id;
 	private SharedPreferences preferences = null;
 	private String author, time, content, title, localUser;
@@ -74,11 +63,14 @@ public class BBSDetailActivity extends Activity {
 
 	private void initPosts() {
 		posts = new ArrayList<BBSDetail>();
-		author = getIntent().getExtras().getString("author");
-		time = getIntent().getExtras().getString("time");
-		content = getIntent().getExtras().getString("content");
-		title = getIntent().getExtras().getString("title");
+		PostDBUtil db = new PostDBUtil();
 		post_id = getIntent().getExtras().getString("postId");
+		
+		List<HashMap<String, String>> postFromDB = db.selectPostById(Integer.valueOf(post_id));
+		author = postFromDB.get(1).get("author");
+		time = postFromDB.get(1).get("time");
+		content = postFromDB.get(1).get("postcontent");;
+		title = postFromDB.get(1).get("postname");
 
 		BBSDetail i = new BBSDetail(title, content, time, author);
 		posts.add(i);
