@@ -155,9 +155,11 @@ public class BBSInTabViewFragment extends Fragment {
 			bbsAdapter.getFilter().filter(s);	
 		}
 	};
+	
 	private void refreshPosts(){
 		this.bbsAdapter.notifyDataSetChanged();
 	}
+	
 	private void initPosts(String tag){
 		posts.clear();
 		String circle_id_st = getActivity().getSharedPreferences("setting", Activity.MODE_PRIVATE).getString("current_circle_id", "");
