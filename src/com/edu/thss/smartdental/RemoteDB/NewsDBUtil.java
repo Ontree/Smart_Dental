@@ -103,25 +103,19 @@ public class NewsDBUtil {
 	 * 
 	 * @return
 	 */
-	public String insertNews(String newstype, String username, String replytouser, String haveread,String newscontent,String postname,int postId) {
+	public String insertNews(String newstype, String username, String replytouser,String newscontent,int postId) {
 
 		parametername.clear();
 		parametervalue.clear();
 		resultinfo.clear();
 		
-		parametername.add("newstype");
 		parametername.add("username");
 		parametername.add("replytouser");
-		parametername.add("haveread");
 		parametername.add("newscontent");
-		parametername.add("postname");
 		parametername.add("postId");
-		parametervalue.add(newstype);
 		parametervalue.add(username);
 		parametervalue.add(replytouser);
-		parametervalue.add(haveread);	
 		parametervalue.add(newscontent);
-		parametername.add(postname);
 		parametername.add(Integer.toString(postId));
 		try{
 			resultinfo = Soap.GetWebService("insertNews", parametername, parametervalue);
