@@ -99,7 +99,7 @@ public class InputActivity extends Activity {
 				String result;
 				String newsResult;
 				if (edit.getText().toString().equals("")) {
-					result = "评论不能为空";
+					result = getResources().getString(R.string.message_null_reply);
 					newsResult ="false";
 				}
 				else {
@@ -108,7 +108,7 @@ public class InputActivity extends Activity {
 				}
 				if ((result.equals("true")) && (newsResult.equals("true"))) {
 					AlertDialog.Builder builder = new AlertDialog.Builder(InputActivity.this);
-					builder.setMessage("发布成功")
+					builder.setMessage(getResources().getString(R.string.message_publish_succeed))
 						   .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
 							
 							@Override
@@ -121,7 +121,7 @@ public class InputActivity extends Activity {
 				}
 				else {
 					AlertDialog.Builder builder = new AlertDialog.Builder(InputActivity.this);
-					result = "连不上服务器";
+					result = getResources().getString(R.string.message_link_fail);
 					builder.setMessage(result)
 						   .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
 							
