@@ -27,7 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_column="1"
-                android:text="设置圈子密码" />
+                android:text="@string/set_circle_password" />
         </TableRow>
         
     </TableLayout>
@@ -36,6 +36,5 @@
         android:id="@+id/all_patient_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_column="1"
-        android:text="管理圈子的所有病人" />
+        android:text="@string/manage_all_patients" />
 </LinearLayout>

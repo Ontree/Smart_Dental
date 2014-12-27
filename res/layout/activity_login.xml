@@ -15,14 +15,14 @@
         android:id="@+id/username_edit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="用户名"
+        android:hint="@string/username"
         android:inputType="text" />
 
     <EditText
         android:id="@+id/password_edit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="密码"
+        android:hint="@string/password"
         android:inputType="textPassword" />
 
     <TableLayout
@@ -36,12 +36,12 @@
                 android:id="@+id/login_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="登录" />
+                android:text="@string/login" />
             <Button
                 android:id="@+id/register_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="注册" />
+                android:text="@string/register" />
         </TableRow>
     </TableLayout>
 </LinearLayout>

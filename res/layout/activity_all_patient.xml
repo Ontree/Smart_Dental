@@ -11,7 +11,7 @@
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:textSize="18sp"
-        android:text="圈子内的所有病人，长按踢出圈子。" />
+        android:text="@string/all_patient_hint" />
     
     <ListView
         android:id="@+id/all_patient"

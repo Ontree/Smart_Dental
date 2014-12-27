@@ -38,6 +38,8 @@
     <string name="doctor_does_not_exist">医生不存在</string>
     <string name="wrong_password">密码错误</string>
     <string name="user_does_not_exist">用户不存在</string>
+    <string name="cannot_connect_to_server">连不上服务器</string>
+    <string name="unknown_error">未知错误</string>
     <string name="already_in_circle">您已加入过该圈子</string>
     <string name="join_successfully">加入成功</string>
     <string name="system_busy">系统繁忙，请稍候</string>
@@ -50,5 +52,18 @@
     <string name="title_activity_detail">帖子详情</string>
     <string name="collect">收藏</string>
     <string name="cancellation">取消收藏</string>
-
+    <string name="username">用户名</string>
+    <string name="password">密码</string>
+    <string name="login">登录</string>
+    <string name="register">注册</string>
+    <string name="repeat_password">重复密码</string>
+    <string name="return_back">返回</string>
+    <string name="add_one_doctor">添加单个医生</string>
+    <string name="add_many_doctor">添加批量医生</string>
+    <string name="add">添加</string>
+    <string name="file_export_hint">从xls表格文件导入\n格式为每行一条记录：用户名,密码\n注意：分隔符必须使用英文逗号。</string>
+    <string name="file_export">从文件导入</string>
+    <string name="set_circle_password">设置圈子密码</string>
+    <string name="manage_all_patients">管理圈子的所有病人</string>
+    <string name="all_patient_hint">圈子内的所有病人，长按踢出圈子。</string>
 </resources>
