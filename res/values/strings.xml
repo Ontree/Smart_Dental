@@ -62,4 +62,7 @@
     <string name="set_circle_password">设置圈子密码</string>
     <string name="manage_all_patients">管理圈子的所有病人</string>
     <string name="all_patient_hint">圈子内的所有病人，长按踢出圈子。</string>
+    <string name="message_null_reply">评论不能为空</string>
+    <string name="message_publish_succeed">发布成功</string>
+    <string name="message_link_fail">连不上服务器</string>
 </resources>

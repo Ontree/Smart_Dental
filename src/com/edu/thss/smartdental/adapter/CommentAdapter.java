@@ -103,7 +103,7 @@ public class CommentAdapter extends BaseAdapter {
 			int viewId = view.getId();
 			if (viewId == holder.delete.getId()) {
 				int commentId = list.get(itemPosition).id;
-				
+				commentDB.deleteComment(String.valueOf(commentId));
 				list.remove(itemPosition);
 				notifyDataSetChanged();
 			}

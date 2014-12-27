@@ -5,6 +5,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import com.edu.thss.smartdental.RemoteDB.CommentDBUtil;
+import com.edu.thss.smartdental.RemoteDB.NewsDBUtil;
+import com.edu.thss.smartdental.RemoteDB.PostDBUtil;
 
 import android.app.Activity; 
 import android.app.AlertDialog;
@@ -32,17 +34,21 @@ public class InputActivity extends Activity {
 	private String type;
 	private String userName;
 	private CommentDBUtil commentDB;
+	private NewsDBUtil newsDB;
+	private PostDBUtil postDB;
 	List<HashMap<String, String>> comment;
 	private SharedPreferences preferences = null;
 	
 	@Override 
 	protected void onCreate(Bundle savedInstanceState) { 
+		newsDB = new NewsDBUtil();
+		
 		super.onCreate(savedInstanceState); 
 		setContentView(R.layout.activity_input); 
 		//layout=(RelativeLayout)findViewById(R.id.exit_layout); 
 		//input_layout = (LinearLayout)findViewById(R.id.input_layout);
 		comment_id=getIntent().getExtras().getString("commentId");
-		toName = "";
+		post_id = getIntent().getExtras().getString("postId");
 		type="comment";
 		preferences = this.getSharedPreferences("setting",
 				Activity.MODE_PRIVATE);
@@ -53,8 +59,11 @@ public class InputActivity extends Activity {
 			comment = commentDB.getCommentById(Integer.parseInt(comment_id));
 			type="reply";
 			toName = comment.get(1).get("commentusername");
+		}else{
+			postDB = new PostDBUtil();
+			toName = postDB.selectPostById(Integer.parseInt(post_id)).get(1).get("author");
 		}
-		post_id = getIntent().getExtras().getString("postId");
+		
 		edit=(EditText)findViewById(R.id.edit_reply);
 		edit.setFocusable(true);
         edit.setFocusableInTouchMode(true);
@@ -88,15 +97,18 @@ public class InputActivity extends Activity {
 				
 				
 				String result;
+				String newsResult;
 				if (edit.getText().toString().equals("")) {
-					result = "评论不能为空";
+					result = getResources().getString(R.string.message_null_reply);
+					newsResult ="false";
 				}
 				else {
 					result = commentDB.insertComment(post_id, edit.getText().toString(), userName, type, toName);
+					newsResult = newsDB.insertNews(userName, toName, edit.getText().toString(), Integer.parseInt(post_id));
 				}
-				if (result.equals("true")) {
+				if ((result.equals("true")) && (newsResult.equals("true"))) {
 					AlertDialog.Builder builder = new AlertDialog.Builder(InputActivity.this);
-					builder.setMessage("发布成功")
+					builder.setMessage(getResources().getString(R.string.message_publish_succeed))
 						   .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
 							
 							@Override
@@ -109,7 +121,7 @@ public class InputActivity extends Activity {
 				}
 				else {
 					AlertDialog.Builder builder = new AlertDialog.Builder(InputActivity.this);
-					if (result.equals("false")) result = "连不上服务器";
+					result = getResources().getString(R.string.message_link_fail);
 					builder.setMessage(result)
 						   .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
 							

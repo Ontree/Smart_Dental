@@ -126,10 +126,6 @@ public class BBSInTabViewFragment extends Fragment {
             // if(list.get(position).equals("LinearLayout"))
                  Intent intent = new Intent();
                  intent.setClass(context,BBSDetailActivity.class);
-                 intent.putExtra("author", posts.get(position).author);
-                 intent.putExtra("title", posts.get(position).title);
-                 intent.putExtra("content", posts.get(position).content);
-                 intent.putExtra("time", posts.get(position).time);
                  intent.putExtra("postId", posts.get(position).id);
                  startActivity(intent);       
                  
