@@ -88,16 +88,9 @@ public class BBSDetailActivity extends Activity {
 
 	private void initPosts1() {
 		posts1 = new ArrayList<CommentElement>();
-		//String author = getIntent().getExtras().getString("author");
-		//String time = getIntent().getExtras().getString("time");
-		//String content = getIntent().getExtras().getString("content");
-
-		//CommentElement i = new CommentElement(content, time, author);
-		//posts1.add(i);
 		
 		CommentDBUtil db = new CommentDBUtil();
 		List<HashMap<String, String>> str = db.getAllComments(Integer.parseInt(post_id));
-		
 		for(int i = 1; i < str.size(); i++){
 			String author = str.get(i).get("commentusername");
 			String time = str.get(i).get("time");

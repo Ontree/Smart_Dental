@@ -6,14 +6,14 @@
     <!-- 边框 -->
     <stroke
         android:width="0.5dp"
-        android:color="@android:color/black" />
+        android:color="@color/app_blue1" />
     <!-- 圆角 -->
-    <corners android:radius="3dp" />
+    <corners android:radius="2dp" />
     <!-- 边距 -->
     <padding
         android:bottom="6dp"
-        android:left="6dp"
-        android:right="6dp"
+        android:left="10dp"
+        android:right="10dp"
         android:top="6dp" />
 
 </shape>

@@ -332,7 +332,7 @@ public class UserDBUtil {
 		parametervalue.add(username);
 		parametervalue.add(doctorname);
 		try{
-			resultinfo = Soap.GetWebService("SetcirclePassword", parametername, parametervalue);
+			resultinfo = Soap.GetWebService("kickout", parametername, parametervalue);
 		}
 		catch(Exception e) {
 		}
