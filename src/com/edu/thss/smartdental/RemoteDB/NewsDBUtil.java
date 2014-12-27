@@ -103,7 +103,7 @@ public class NewsDBUtil {
 	 * 
 	 * @return
 	 */
-	public String insertNews(String newstype, String username, String replytouser,String newscontent,int postId) {
+	public String insertNews(String username, String replytouser,String newscontent,int postId) {
 
 		parametername.clear();
 		parametervalue.clear();
