@@ -10,7 +10,7 @@ public class CommentElement {
 	public String type;
 	public String toName;
 	
-	public CommentElement(String content, String time, String author, int id, int postId,String type,String toName){
+	public CommentElement(String content, String time, String author, int id, int postId,String type,String toName, String UserName){
 		this.content = content;
 		this.time = time;
 		this.author = author;
@@ -21,6 +21,9 @@ public class CommentElement {
 		this.toName = toName;
 		if (type.equals("reply")){
 			this.content = "to "+toName+": "+this.content;
+		}
+		if(UserName.equals(author)){
+			this.isDeletable = true;
 		}
 	}
 

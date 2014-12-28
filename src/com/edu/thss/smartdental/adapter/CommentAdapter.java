@@ -30,6 +30,7 @@ public class CommentAdapter extends BaseAdapter {
 	private buttonViewHolder holder;
 	private String username;
 	private CommentDBUtil commentDB;
+	private boolean isDeletable;
 	private class buttonViewHolder {
 		Button delete;
 		Button reply;
@@ -85,6 +86,12 @@ public class CommentAdapter extends BaseAdapter {
 		else {
 			holder.delete.setVisibility(View.INVISIBLE);
 		}*/
+		isDeletable = list.get(position).isDeletable;
+		if(isDeletable){
+			holder.delete.setVisibility(View.VISIBLE);
+		}else{
+			holder.delete.setVisibility(View.INVISIBLE);
+		}
 		holder.delete.setOnClickListener(new DeleteButtonListener(position));
 		holder.reply.setOnClickListener(new ReplyButtonListener(position));
 		return convertView;
