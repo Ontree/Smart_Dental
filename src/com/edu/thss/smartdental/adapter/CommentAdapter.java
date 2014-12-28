@@ -1,6 +1,5 @@
 /*
- * 娴ｆ粏锟藉拑绱伴悳瀣暏閻愶拷
- * 閺冦儲婀￠敍锟�2014楠烇拷12閺堬拷11閺冿拷
+ * author:Yue Yifei
  */
 package com.edu.thss.smartdental.adapter;
 
