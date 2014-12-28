@@ -11,7 +11,7 @@ public class BBSDetail {
 	public BBSDetail(String title, String content, String time, String author){
 		this.title = title;
 		this.content = content;
-		this.time = time;
+		this.time = time.substring(0, time.length()-3);
 		this.author = author;
 		this.tab = "";
 		this.isDeletable = false;
