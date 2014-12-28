@@ -37,6 +37,7 @@ public class PostBBSActivity extends Activity {
 		preferences = getSharedPreferences("setting", Activity.MODE_PRIVATE);
 		editor = preferences.edit();
 		setContentView(R.layout.activity_post_bbs);
+		edit_bbs_title = (EditText)findViewById(R.id.edit_bbs_title);
 		edit_bbs_content = (EditText)findViewById(R.id.edit_bbs_content);
 		edit_tab_spinner = (Spinner)findViewById(R.id.edit_tab_spinner);
 		adapter = ArrayAdapter.createFromResource(PostBBSActivity.this, R.array.tab_names, android.R.layout.simple_spinner_item);
@@ -75,17 +76,17 @@ public class PostBBSActivity extends Activity {
 		String content = edit_bbs_content.getText().toString();
 		String tabName = edit_tab_spinner.getSelectedItem().toString();
 		if (title.equals("")) {
-			Toast.makeText(PostBBSActivity.this, "请填写帖子标题", Toast.LENGTH_LONG).show();
+			Toast.makeText(PostBBSActivity.this, "璇峰～鍐欏笘瀛愭爣棰�", Toast.LENGTH_LONG).show();
 			return;
 		}
 		if (content.equals("")) {
-			Toast.makeText(PostBBSActivity.this, "请填写帖子内容", Toast.LENGTH_LONG).show();
+			Toast.makeText(PostBBSActivity.this, "璇峰～鍐欏笘瀛愬唴瀹�", Toast.LENGTH_LONG).show();
 			return;
 		}
 		PostElement postElement = new PostElement(title, content, preferences.getString("username", ""), tabName, preferences.getString("current_circle_id", ""), new Date(), false);
 		AlertDialog.Builder builder = new AlertDialog.Builder(PostBBSActivity.this);
 		postElement.insertToDB();
-		builder.setMessage("发布成功")
+		builder.setMessage("鍙戝竷鎴愬姛")
 			.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
 				
 				@Override
