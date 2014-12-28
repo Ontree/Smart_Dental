@@ -88,7 +88,8 @@ public class BBSDetailActivity extends Activity {
 			String commentId = str.get(i).get("commentid");
 			String type = str.get(i).get("commenttype");
 			String toName=str.get(i).get("replytouser");
-			CommentElement element = new CommentElement(content, time, author, Integer.parseInt(commentId),Integer.parseInt(post_id),type,toName);
+			String userNmae = preferences.getString("username", "");
+			CommentElement element = new CommentElement(content, time, author, Integer.parseInt(commentId),Integer.parseInt(post_id),type,toName,userName);
 			
 			posts1.add(element);
 		}
