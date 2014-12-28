@@ -12,14 +12,14 @@
 	    android:layout_marginLeft="10dp"
 	    android:paddingTop="10dp"
 	    android:singleLine="true"
-	    android:textSize="22sp"
+	    android:textSize="18sp"
 	    android:textColor="@color/app_black"
 	    android:text="replyer"/>
     <TextView 
 	    android:id="@+id/news_list_item_preview"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
-	    android:textSize="18sp"
+	    android:textSize="14sp"
 	    android:textColor="@color/app_grey"
 	    android:ellipsize="end"
 	    android:singleLine="true"

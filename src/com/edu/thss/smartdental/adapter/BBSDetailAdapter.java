@@ -168,7 +168,7 @@ public class BBSDetailAdapter extends BaseAdapter implements Filterable{
 				
 				list.remove(itemPosition);
 				notifyDataSetChanged();
-				
+				context1.markDelete();
 				context1.finish();
                 
 			}
