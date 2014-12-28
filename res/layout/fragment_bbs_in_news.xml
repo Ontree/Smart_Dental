@@ -11,5 +11,14 @@
         android:divider="@color/app_grey"
         android:dividerHeight="1dp" >
     </ListView>
+    <TextView 
+        android:id="@+id/bbs_no_news_text"
+        android:layout_alignParentTop="true"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:paddingTop="10dp"
+        android:paddingLeft="10dp"
+        android:textSize="18sp"
+        android:text="@string/no_news"/>
 
 </RelativeLayout>
