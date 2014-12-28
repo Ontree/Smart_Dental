@@ -19,7 +19,7 @@ public class BBSElement {
 		}else{
 			this.preview = content.substring(0, 20);
 		}
-		this.time =time;
+		this.time =time.substring(0, time.length()-3);
 		this.tab = "";
 		this.author = author;
 		this.isCollected = isCollected;
